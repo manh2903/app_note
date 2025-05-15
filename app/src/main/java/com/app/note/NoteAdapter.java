@@ -39,8 +39,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         holder.tvNoiDung.setText(note.getNoidung());
         holder.tvNgayTao.setText(note.getNgaytao());
 
-        holder.btnSua.setOnClickListener(v -> listener.onEditClick(note));
-        holder.btnXoa.setOnClickListener(v -> listener.onDeleteClick(note));
+        holder.itemView.setOnClickListener(v -> listener.onEditClick(note));
+//        holder.btnXoa.setOnClickListener(v -> listener.onDeleteClick(note));
     }
 
     @Override
@@ -61,8 +61,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             super(itemView);
             tvNoiDung = itemView.findViewById(R.id.tvNoiDung);
             tvNgayTao = itemView.findViewById(R.id.tvNgayTao);
-            btnSua = itemView.findViewById(R.id.btnSua);
-            btnXoa = itemView.findViewById(R.id.btnXoa);
         }
     }
 } 

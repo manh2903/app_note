@@ -36,41 +36,21 @@ public class MainActivity extends AppCompatActivity implements NoteAdapter.OnNot
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Khởi tạo DatabaseHelper
         dbHelper = new DatabaseHelper(this);
 
-        // Thiết lập Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Ghi chú của tôi");
 
-        // Ánh xạ view
         recyclerView = findViewById(R.id.recyclerView);
         FloatingActionButton fabAdd = findViewById(R.id.fabAdd);
 
-        // Khởi tạo RecyclerView
         noteList = new ArrayList<>();
         adapter = new NoteAdapter(noteList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Thêm chức năng vuốt để xóa
-//        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-//            @Override
-//            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-//                int position = viewHolder.getAdapterPosition();
-//                Note note = noteList.get(position);
-//                deleteNote(note.getId());
-//            }
-//        };
-//        new ItemTouchHelper(swipeCallback).attachToRecyclerView(recyclerView);
 
-        // Xử lý sự kiện click FAB
         fabAdd.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DetailNoteActivity.class);
             startActivity(intent);
